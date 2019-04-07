@@ -52,7 +52,7 @@ routes.get('/faucet/:account', async (req, res) => {
 routes.get('/network', async (req, res) => {
 	const n = Network.fromJson({
 		host:'ridlnet.get-scatter.com',
-		port:8888,
+		port:80,
 		protocol:'http',
 		chainId:network.chainId
 	});
