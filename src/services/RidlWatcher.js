@@ -92,12 +92,20 @@ const processQueue = async () => {
 		clone.total_reputes = clone.reputation.total_reputes;
 		delete clone.parent;
 		delete clone.reputation;
-		delete clone.miner_frags;
 
 		await bucket.upsert(`reputable:${reputable.id}`, Object.assign({
 			docType:'reputable',
 			entity:data.entity,
 		}, clone));
+
+		if(!await bucket.exists(`reputable:${parentId}`)){
+			const parent = await ridl.reputation.getEntity(parentId);
+			parent.total_reputes = 0;
+			delete parent.parent;
+			delete parent.reputation;
+
+			await bucket.upsert(`reputable:${parentId}`, Object.assign({docType:'reputable'}, parent));
+		}
 
 		delete data.parent;
 		delete data.network;
