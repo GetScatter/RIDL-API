@@ -1,0 +1,52 @@
+{
+  "name": "ridl-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "author": "",
+  "license": "ISC",
+  "scripts": {
+    "prestart": "npm run -s build",
+    "prod": "node dist/index.js",
+    "pre-start": "rimraf -p",
+    "start": "npm run pre-start && nodemon src/index.js --exec \"node -r dotenv/config -r babel-register\"",
+    "clean": "rimraf dist",
+    "build": "npm run clean && mkdir -p dist && babel src -s -D -d dist",
+    "testfile": "mocha --require babel-core/register --exit --timeout 1000000",
+    "test": "npm run testfile \"test/**/*.spec.js\" --timeout 1000000"
+  },
+  "dependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "bluebird": "^3.5.3",
+    "couchbase": "^2.6.2",
+    "body-parser": "^1.18.2",
+    "compression": "^1.7.3",
+    "cors": "^2.8.4",
+    "express": "^4.16.4",
+    "isomorphic-fetch": "^2.2.1",
+    "morgan": "^1.9.0",
+    "ridl": "^2.0.46",
+    "rimraf": "^2.6.2",
+    "watcheosio": "^1.0.3"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "dotenv": "^4.0.0",
+    "mocha": "^5.2.0",
+    "nodemon": "^1.12.1"
+  },
+  "babel": {
+    "presets": [
+      [
+        "env",
+        {
+          "targets": {
+            "node": "current"
+          }
+        }
+      ]
+    ],
+    "plugins": []
+  }
+}

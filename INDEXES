@@ -1,0 +1,3 @@
+CREATE INDEX repute_type ON ridl(`actionType`,`id`) WHERE actionType = 'repute' USING GSI
+CREATE INDEX doc_type ON ridl(`docType`,`actionType`) USING GSI
+CREATE INDEX entity_search ON ridl(`entity`) WHERE docType = 'reputable' USING GSI
