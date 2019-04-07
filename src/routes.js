@@ -5,6 +5,7 @@ import RidlWatcher from './services/RidlWatcher';
 import QueryService from "./services/QueryService";
 import AccountService from "./services/AccountService";
 import {network} from "./services/NetworkService";
+import Network from "./models/Network";
 
 const bucket = couchbase('ridl');
 
@@ -49,7 +50,13 @@ routes.get('/faucet/:account', async (req, res) => {
 });
 
 routes.get('/network', async (req, res) => {
-	res.json(network);
+	const n = Network.fromJson({
+		host:'ridlnet.get-scatter.com',
+		port:8888,
+		protocol:'http',
+		chainId:network.chainId
+	});
+	res.json(n);
 });
 
 
