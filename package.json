@@ -26,7 +26,7 @@
     "express": "^4.16.4",
     "isomorphic-fetch": "^2.2.1",
     "morgan": "^1.9.0",
-    "ridl": "^2.0.46",
+    "ridl": "^2.0.47",
     "rimraf": "^2.6.2",
     "watcheosio": "^1.0.3"
   },
