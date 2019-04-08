@@ -51,7 +51,7 @@ routes.get('/faucet/:account', async (req, res) => {
 
 routes.get('/network', async (req, res) => {
 	const n = Network.fromJson({
-		host:'ridlnet.get-scatter.com',
+		host:'node.ridl.network',
 		port:443,
 		protocol:'https',
 		chainId:network.chainId
